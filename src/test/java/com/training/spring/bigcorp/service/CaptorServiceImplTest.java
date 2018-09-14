@@ -1,6 +1,7 @@
 package com.training.spring.bigcorp.service;
 
 import com.training.spring.bigcorp.model.Captor;
+import com.training.spring.bigcorp.model.RealCaptor;
 import com.training.spring.bigcorp.model.Site;
 import com.training.spring.bigcorp.repository.CaptorDao;
 import com.training.spring.bigcorp.service.measure.MeasureService;
@@ -47,7 +48,7 @@ public class CaptorServiceImplTest {
         // Initialisation
         String siteId = "siteId";
 
-        Captor expectedCaptor = new Captor(siteId, new Site("Florange"));
+        Captor expectedCaptor = new RealCaptor(siteId, new Site("Florange"));
         Mockito.when(captorDao.findBySiteId(siteId)).thenReturn(Arrays.asList(expectedCaptor))
         ;
         // Appel du SUT

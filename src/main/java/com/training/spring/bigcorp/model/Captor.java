@@ -1,23 +1,18 @@
 package com.training.spring.bigcorp.model;
 
 import javax.persistence.*;
+import java.lang.reflect.Type;
 import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-public class Captor {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Captor {
     @Id
     private String id = UUID.randomUUID().toString();
 
     @Column(nullable = false)
     private String name;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private PowerSource powerSource;
-
-    @Column
-    private Integer defaultPowerInWatt;
 
     @ManyToOne
     private Site site;
@@ -83,20 +78,4 @@ public class Captor {
                 '}';
     }
 
-    public PowerSource getPowerSource() {
-        return powerSource;
-    }
-
-    public void setPowerSource(PowerSource powerSource) {
-        this.powerSource = powerSource;
-    }
-
-
-    public Integer getDefaultPowerInWatt() {
-        return defaultPowerInWatt;
-    }
-
-    public void setDefaultPowerInWatt(Integer defaultPowerInWatt) {
-        this.defaultPowerInWatt = defaultPowerInWatt;
-    }
 }
